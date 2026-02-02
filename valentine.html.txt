@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .heart {
+      font-size: 5rem;
+      animation: pulse 1.2s infinite;
+      margin-bottom: 30px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 120px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yes {
+      left: 20px;
+      background-color: #28a745;
+      color: white;
+    }
+
+    #no {
+      right: 20px;
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Be My Valentine?</h1>
+  <div class="heart">❤️</div>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">Yes 💕</button>
+    <button id="no">No 😅</button>
+  </div>
+
+  <!-- Audio (plays only after YES click) -->
+  <audio id="song">
+    <source src="die-with-a-smile.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+      const song = document.getElementById("song");
+      song.play();
+
+      document.body.innerHTML = `
+        <h1 style="color:white;">Yaaay, Yuvika! 💖🥰</h1>
+        <p style="font-size:2rem;color:white;">
+          I’m so happy you said yes ❤️<br>
+          Happy Valentine’s Day 💘
+        </p>
+        <div style="font-size:5rem;">💞</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
